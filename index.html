@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Self Driving Car</title>
+        <link href="./style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <canvas id="carCanvas"></canvas>
+        <div id="controls">
+            <div id="setup">
+                <div class="row">
+                    <div class="heading">Setup</div>
+                    <div class="row">
+                        <div class="button" onclick="saveSetupSettings()">Save</div>
+                        <div class="button" onclick="clearSetupSettings()">Clear</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="ai-car-count">AI Car Count</label>
+                    <input type="number" name="ai-car-count" id="ai-car-count" min="1" />
+                </div>
+                <div class="row">
+                    <label for="ai-car-speed">AI Car Speed</label>
+                    <input type="number" name="ai-car-speed" id="ai-car-speed" min="3" max="10" step="0.1" />
+                </div>
+                <div class="row">
+                    <label for="traffic-density">Traffic Density</label>
+                    <input type="number" name="traffic-density" id="traffic-density" disabled />
+                </div>
+                <div class="row">
+                    <label for="sensor-count">Sensor Count</label>
+                    <input
+                        type="number"
+                        name="sensor-count"
+                        id="sensor-count"
+                        onchange="updateSensorFields(event.target.value)"
+                    />
+                </div>
+                <div class="row">
+                    <label for="sensor-length">Sensor Length</label>
+                    <input type="number" name="sensor-length" id="sensor-length" />
+                </div>
+                <div class="row">
+                    <label for="sensor-spread">Sensor Spread</label>
+                    <input
+                        type="number"
+                        name="sensor-spread"
+                        id="sensor-spread"
+                        min="30"
+                        max="360"
+                        step="30"
+                        value="90"
+                    />
+                </div>
+            </div>
+            <div id="settings">
+                <div class="row">
+                    <div class="heading">Global</div>
+                    <div class="row">
+                        <div class="button" onclick="saveGlobalSettings()">Save</div>
+                        <div class="button" onclick="clearGlobalSettings()">Clear</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="mutate-biases">Mutate Biases</label>
+                    <input type="checkbox" name="mutate-biases" id="mutate-biases" checked="true" />
+                </div>
+                <div class="row">
+                    <label for="biases-alpha">Biases Alpha</label>
+                    <input type="number" name="biases-alpha" id="biases-alpha" min="0" max="1" step="0.0001" />
+                </div>
+                <div class="row">
+                    <label for="mutate-weights">Mutate Weights</label>
+                    <input type="checkbox" name="mutate-weights" id="mutate-weights" checked="true" />
+                </div>
+                <div class="row">
+                    <label for="weights-alpha">Weights Alpha</label>
+                    <input type="number" name="weights-alpha" id="weights-alpha" min="0" max="1" step="0.0001" />
+                </div>
+                <div class="heading">Inputs</div>
+                <div id="sensor-fields"></div>
+                <div class="heading">Outputs</div>
+                <div class="row">
+                    <label for="forward-alpha">Forward Alpha</label>
+                    <input type="number" name="forward-alpha" id="forward-alpha" min="0" max="1" step="0.0001" />
+                </div>
+                <div class="row">
+                    <label for="reverse-alpha">Reverse Alpha</label>
+                    <input type="number" name="reverse-alpha" id="reverse-alpha" min="0" max="1" step="0.0001" />
+                </div>
+                <div class="row">
+                    <label for="left-alpha">Left Alpha</label>
+                    <input type="number" name="left-alpha" id="left-alpha" min="0" max="1" step="0.0001" />
+                </div>
+                <div class="row">
+                    <label for="right-alpha">Right Alpha</label>
+                    <input type="number" name="right-alpha" id="right-alpha" min="0" max="1" step="0.0001" />
+                </div>
+            </div>
+            <div class="no-select" id="telemetry">
+                <div class="heading">Telemetry</div>
+                <div class="row">
+                    <label for="total-cars-alive">Cars Undamaged</label>
+                    <input type="number" name="total-cars-alive" id="total-cars-alive" readonly />
+                </div>
+                <div class="row">
+                    <label for="selected-car" class="heading">Selected Car</label>
+                    <input type="number" name="selected-car" id="selected-car" readonly />
+                </div>
+                <div id="telemetry-fields"></div>
+                <div id="indicators">
+                    <div class="indicator" id="forward-indicator">Fwd</div>
+                    <div class="indicator" id="reverse-indicator">Rev</div>
+                    <div class="indicator" id="left-indicator">L</div>
+                    <div class="indicator" id="right-indicator">R</div>
+                </div>
+            </div>
+            <div id="buttons">
+                <div class="button restart" onclick="restart()">Restart</div>
+                <div class="button save" onclick="saveBest()">Save Best</div>
+                <div class="button" onclick="clearBest()">Clear Best</div>
+                <div class="button" onclick="selectBest()">Follow Best</div>
+                <div class="button" onclick="selectCar('up')">Follow +</div>
+                <div class="button" onclick="selectCar('down')">Follow -</div>
+                <div class="button save" onclick="saveSelected()">Save Selected</div>
+                <div class="button" onclick="clearSelected()">Clear Selected</div>
+            </div>
+        </div>
+        <script src="./network.js"></script>
+        <script src="./settings.js"></script>
+        <script src="./telemetry.js"></script>
+        <script src="./sensor.js"></script>
+        <script src="./utils.js"></script>
+        <script src="./road.js"></script>
+        <script src="./controls.js"></script>
+        <script src="./car.js"></script>
+        <script src="./main.js"></script>
+    </body>
+</html>

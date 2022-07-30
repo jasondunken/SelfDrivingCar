@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    background-color: rgb(48, 117, 48);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#carCanvas {
+    background-color: lightgray;
+}
+
+#networkCanvas {
+    background-color: black;
+}
+
+#setup,
+#settings,
+#sensor-fields,
+#telemetry-fields,
+#telemetry,
+#controls,
+#buttons {
+    display: grid;
+    column-gap: 0.25rem;
+    row-gap: 0.25rem;
+}
+
+#setup,
+#settings,
+#telemetry,
+#controls,
+#buttons {
+    padding: 0.5rem;
+}
+
+#setup {
+    background-color: goldenrod;
+}
+
+#settings {
+    background-color: bisque;
+}
+
+#telemetry {
+    background-color: aquamarine;
+    user-select: none;
+}
+
+#telemetry > .row > input[type="number"],
+#telemetry > #telemetry-fields > .row > input[type="number"] {
+    cursor: default;
+    outline: none;
+}
+
+#indicators {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    column-gap: 5px;
+    row-gap: 5px;
+}
+
+.indicator {
+    padding: 5px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    background-color: darkgray;
+}
+
+#buttons {
+    background-color: burlywood;
+}
+
+.heading {
+    font-weight: 700;
+    font-size: large;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.button {
+    border: 1px solid blue;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    background-color: beige;
+    height: 2rem;
+    display: grid;
+    place-content: center;
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+    user-select: none;
+}
+
+.row > .button {
+    height: 1.25rem;
+    width: 6ch;
+    padding: 0;
+    row-gap: 0;
+}
+
+.button:hover {
+    background-color: lightgray;
+}
+
+.restart {
+    background-color: lightcoral;
+}
+
+.save {
+    background-color: lightseagreen;
+}
+
+.on {
+    background-color: greenyellow;
+}
+
+label {
+    width: 15ch;
+}
+
+input[type="number"] {
+    width: 12ch;
+}
